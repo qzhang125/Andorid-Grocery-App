@@ -1,0 +1,21 @@
+<resources>
+    <string name="disclaimer">Copy rights 2022. All right reserved. The image used in this app belongs to their owners. This app is not for commercial use and is only for educational purpose</string>
+    <string name="app_name">Groceries On The Go</string>
+    <string name="groceries_img_desc">Groceries icon</string>
+    <string name="email_address_text">Email Address</string>
+    <string name="password_text">Password</string>
+    <string name="email_placeholder">name@example.com</string>
+    <string name="password_placeholder">Alphabets only</string>
+    <string name="button_text">Log in</string>
+    <string name="errorMsg"></string>
+    <string name="storeIcon">Store Icon</string>
+    <string name="storeName"></string>
+    <string name="storeAddress"></string>
+    <string name="checkbox">Check box</string>
+    <string name="toolbarIcon">Tool bar icon</string>
+    <string name="mainToolBartext">Groceries On The Go</string>
+    <string name="ToolbarText" />
+    <string name="Username">User Name</string>
+    <string name="recyclerview_storeName">Store name</string>
+    <string name="recyclerview_storeAddress">Store address</string>
+</resources>
