@@ -1,8 +1,15 @@
 package com.example.map524_assignment1;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +18,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
     Context context;
     Stores[] storelist;
+
     RecyclerAdapter(Context context, Stores[] stores){
         this.context = context;
         this.storelist = stores;
@@ -65,25 +80,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         @Override
         public void onClick(View view) {
             switch (view.getId()){
-                case R.id.textView10:
-                    showNameDialog();
-                    break;
-                case R.id.textView11:
-                    showAddressDialog();
-                    break;
                 case R.id.imageView5:
-                    showIconDialog();
-                    break;
-                case R.id.imageView6:
-                    showStatusDialog();
-                    break;
-                default:
-                    showTheRow();
+                    saveToGallery();
                     break;
             }
         }
-
-        void showNameDialog() {
+        //Assignment 2B
+        /*void showNameDialog() {
             AlertDialog.Builder nameAlert= new AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
             nameAlert.setTitle("Click information");
             nameAlert.setIcon(R.drawable.ic_baseline_info_24);
@@ -95,8 +98,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
                 }
             });
             nameAlert.create().show();
-        }
-        void showAddressDialog(){
+        }*/
+        /*void showAddressDialog(){
             AlertDialog.Builder addressAlert= new AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
             addressAlert.setTitle("Click information");
             addressAlert.setIcon(R.drawable.ic_baseline_info_24);
@@ -108,8 +111,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
                 }
             });
             addressAlert.create().show();
-        }
-        void showIconDialog(){
+        }*/
+        /*void showIconDialog(){
             AlertDialog.Builder iconAlert= new AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
             iconAlert.setTitle("Click information");
             iconAlert.setIcon(R.drawable.ic_baseline_info_24);
@@ -121,8 +124,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
                 }
             });
             iconAlert.create().show();
-        }
-        void showStatusDialog(){
+        }*/
+        /*void showStatusDialog(){
             AlertDialog.Builder statusAlert= new AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
             statusAlert.setTitle("Click information");
             statusAlert.setIcon(R.drawable.ic_baseline_info_24);
@@ -134,8 +137,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
                 }
             });
             statusAlert.create().show();
-        }
-        void showTheRow(){
+        }*/
+        /*void showTheRow(){
             int index = getAdapterPosition();
             AlertDialog.Builder rowAlert= new AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
             rowAlert.setTitle("Click information");
@@ -148,6 +151,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
                 }
             });
             rowAlert.create().show();
+        }*/
+
+        //Assignment 3
+        void saveToGallery(){
+            int index = getAdapterPosition();
+            String fileName = storelist[index].storeName;
+
+            BitmapDrawable drawable = (BitmapDrawable) storeImage.getDrawable();
+            Bitmap bitmap = drawable.getBitmap();
+            MediaStore.Images.Media.insertImage(storeImage.getContext().getContentResolver(), bitmap,fileName,"Grocery stores" );
+            Toast.makeText(storeName.getContext(),"Image has been saved in gallery", Toast.LENGTH_SHORT).show();
         }
+
     }
 }

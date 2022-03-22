@@ -1,9 +1,11 @@
 package com.example.map524_assignment1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,8 +21,7 @@ public class StorePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_page);
         reyView= findViewById(R.id.recyclerView);
-
-        //Load store logo
+                //Load store logo
         Bitmap image1 = BitmapFactory.decodeResource(this.getResources(),R.drawable.walmart);
         Bitmap image2 = BitmapFactory.decodeResource(this.getResources(),R.drawable.freshco);
         Bitmap image3 = BitmapFactory.decodeResource(this.getResources(),R.drawable.superstore);
